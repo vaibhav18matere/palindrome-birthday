@@ -12,7 +12,7 @@ isPalindrome = (str) => {
     return str === reverse;
 }
 
-convertDateToString = () => {
+convertDateToString = (date) => {
     var dateStr = {
         day: " ",
         month: " ",
@@ -36,10 +36,24 @@ convertDateToString = () => {
 
 }
 
-var date = {
-    day: 5,
-    month: 9,
-    year: 2020
+getAllDateFormats = (date) => {
+
+    var dateStr = convertDateToString(date);
+
+    var ddmmyyyy = dateStr.day + dateStr.month + dateStr.year;
+    var mmddyyyy = dateStr.month + dateStr.day + dateStr.year;
+    var yyyymmdd = dateStr.year + dateStr.month + dateStr.day;
+    var ddmmyy = dateStr.day + dateStr.month + dateStr.year.slice(-2);
+    var mmddyy = dateStr.month + dateStr.day + dateStr.year.slice(-2);
+    var yymmdd = dateStr.year.slice(-2) + dateStr.month + dateStr.day;
+
+    return [ddmmyyyy, mmddyyyy, yyyymmdd, ddmmyy, mmddyy, yymmdd]
 }
 
-console.log(convertDateToString(date))
+var date = {
+    day: 2,
+    month: 9,
+    year: 2012
+};
+
+console.log(getAllDateFormats(date));
