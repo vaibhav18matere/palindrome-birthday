@@ -18,6 +18,7 @@ convertDateToString = (date) => {
         month: " ",
         year: " ",
     };
+
     if (date.day < 10) {
         dateStr.day = "0" + date.day;
     } else {
@@ -50,10 +51,23 @@ getAllDateFormats = (date) => {
     return [ddmmyyyy, mmddyyyy, yyyymmdd, ddmmyy, mmddyy, yymmdd]
 }
 
+checkPalindromeForAllDateFormats = (date) => {
+    var listOfPalindromes = getAllDateFormats(date);
+
+    var flag = false;
+    for (var i = 0; i < listOfPalindromes.length; i++) {
+        if (isPalindrome(listOfPalindromes[i])) {
+            flag = true;
+            break;
+        }
+    }
+    return flag;
+}
+
 var date = {
-    day: 2,
+    day: 13,
     month: 9,
-    year: 2012
+    year: 2011
 };
 
-console.log(getAllDateFormats(date));
+console.log(checkPalindromeForAllDateFormats(date));
