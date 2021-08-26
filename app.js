@@ -1,19 +1,45 @@
 console.log("let's start !");
 
-function reverseStr(str) {
+reverseStr = (str) => {
     var listOfCharts = str.split('');
     var reverseListOfChars = listOfCharts.reverse();
     var reversedStr = reverseListOfChars.join("");
     return reversedStr;
 }
 
-function isPalindrome(str) {
+isPalindrome = (str) => {
     var reverse = reverseStr(str);
     return str === reverse;
 }
 
+convertDateToString = () => {
+    var dateStr = {
+        day: " ",
+        month: " ",
+        year: " ",
+    };
+    if (date.day < 10) {
+        dateStr.day = "0" + date.day;
+    } else {
+        dateStr.day = date.day.toString();
+    }
 
-console.log(isPalindrome("242"));
-console.log(isPalindrome("12321"));
-console.log(isPalindrome("nani"));
-console.log(isPalindrome("mama"));
+    if (date.month < 10) {
+        dateStr.month = "0" + date.month;
+    } else {
+        dateStr.month = date.month.toString();
+    }
+
+    dateStr.year = date.year.toString();
+
+    return dateStr;
+
+}
+
+var date = {
+    day: 5,
+    month: 9,
+    year: 2020
+}
+
+console.log(convertDateToString(date))
