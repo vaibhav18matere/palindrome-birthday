@@ -1,5 +1,3 @@
-console.log("let's start !");
-
 reverseStr = (str) => {
     var listOfCharts = str.split('');
     var reverseListOfChars = listOfCharts.reverse();
@@ -86,7 +84,7 @@ getNextDate = (date) => {
 
     if (month === 2) {
         if (isLeapYear(year)) {
-            if (day > 29) {
+            if (day > 28) {
                 day = 1;
                 month++;
             }
@@ -114,16 +112,47 @@ getNextDate = (date) => {
     };
 }
 
-
-
 getNextPalindromeDate = (date) => {
+    var counter = 0;
+    var nextDate = getNextDate(date);
 
+    while (1) {
+        counter++;
+        var isPalindrome = checkPalindromeForAllDateFormats(nextDate);
+        if (isPalindrome) {
+            break;
+        }
+        var nextDate = getNextDate(nextDate);
+    }
+    return [counter, nextDate];
 }
 
-var date = {
-    day: 28,
-    month: 2,
-    year: 2020
-};
+const dateInputRef = document.querySelector("#birthday-date");
+const showButtonRef = document.querySelector("#show-button");
+var resultRef = document.querySelector("#result");
 
-console.log(getNextDate(date));
+clickHandler = () => {
+    var birthdayStr = dateInputRef.value;
+
+    if (birthdayStr !== " ") {
+        var listOfDate = birthdayStr.split("-");
+
+        var date = {
+            day: Number(listOfDate[2]),
+            month: Number(listOfDate[1]),
+            year: Number(listOfDate[0])
+        };
+
+        var isPalindrome = checkPalindromeForAllDateFormats(date);
+
+        if (isPalindrome) {
+            resultRef.innerText = "Your Birthday is Palindrome"
+        } else {
+            var [counter, nextDate] = getNextPalindromeDate(date);
+            resultRef.innerText = `Next Palindrome date is ${nextDate.day} - ${nextDate.month} - ${nextDate.year}, You missed it by ${counter} days.`
+        }
+
+    }
+}
+
+showButtonRef.addEventListener("click", clickHandler);
