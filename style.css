@@ -1,48 +1,64 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap');
 
-:root{
-    background-color: rgb(138, 138, 146);
-    --primary-color:#2367dd;
-}
-
-body {
-    font-family: 'Open Sans', sans-serif;
-    margin: 0;
+body{
+    margin:0;
     text-align: center;
+    background: rgb(213,166,208);
+    background: radial-gradient(circle, rgba(213,166,208,1) 0%, rgba(96,162,201,1) 100%);
 }
 
-h1,h2 {
-    margin: 1em;
-    margin-bottom: 0.5em;
-}
-p{
-    padding: 0.5em;
-    font-size: large;
-}
-input {
-    margin: 1em;
-    padding: 0.5em;
-    border: 2px solid var(--primary-color);
-    border-radius: 1em;
+.container{
+    height: 70vh;
+    width: 60%;
+    margin: 15vh auto;
+    box-shadow: 2px 2px 8px 13px #424b6c;
 }
 
-button{
-    margin: 1rem;
-    padding: 0.7em;
-    background-color: var(--primary-color);
-    color: var(--off-white);
-    border-radius: 1em;
+.privacyMsg{
+    box-shadow: rgb(221 192 192) 2px 2px 8px 3px;
+    background: rgb(116, 137, 199);
+    color: rgb(0, 0, 0);
+    padding: 5px;
+}
+
+#main-section{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#main-section input{
     border: none;
-    font-size: large;
-    cursor: pointer;
-}
-
-button:hover{
-    background-color: white;
+    outline: none;
+    border-radius: 5px;
+    padding: 5px 8px;
     color: black;
 }
 
+button{
+    display: block;
+    margin: auto;
+    margin-top: 1rem;
+    padding: 0.5rem;
+    background:rgb(111,163,202);
+    color: #000000;
+    border-radius: 0.5rem;
+    border: none;
+    border-width: medium;
+    cursor: pointer;
+    font-size: large;
+}
+
+button:hover{
+    background-color:rgb(18, 64, 202);
+    color: white;
+}
+
 #result{
-    font-size: x-large;
-    padding: 1em; 
+    margin: 5px;
+    font-size: 1.2rem;
+    border-bottom: 3px solid grey;
+    padding: 5px 20px;
+    border-radius: 5px;
 }

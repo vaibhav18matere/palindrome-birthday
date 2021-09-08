@@ -151,7 +151,7 @@ clickHandler = () => {
             resultRef.innerText = "Your Birthday is Palindrome"
         } else {
             var [counter, nextDate] = getNextPalindromeDate(date);
-            resultRef.innerText = `Your birthdate is not palindrome, next Palindrome date is ${nextDate.day}-${nextDate.month}-${nextDate.year}, You missed it by ${counter} days.`
+            resultRef.innerText = `Your birthdate is not palindrome, next Palindrome date is ${nextDate.day}-${nextDate.month}-${nextDate.year}. You missed it by ${counter} days.`
         }
 
     }

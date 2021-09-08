@@ -7,25 +7,35 @@
     <link rel="stylesheet" href="style.css">
     <title>Palindrome Birthday</title>
 </head>
+
 <body>
-  <main>
-    <h1>Palindrome Birthday </h1>
+      
+  <div class="container" >
+    <div id="privacy-policy" class='privacyMsg'>
+        Privacy Notice - We are not storing your data. 
+        <button id="privacy-button">X</button>
+    </div>
+      <div id="main-section">
+        <h1>Palindrome Birthday </h1>
 
-    <h2>Enter your birthdate and we will tell you if your birthdate is a palindrome</h2>
+        <h2>A palindrome is a word / number which reads the same backward as forward.         
+        </h2>
+        <h3>
+            Enter your birthdate and we will tell you if your birthdate is a palindrome or not !   
+        </h3>
 
-    <p>A palindrome is a word/number which reads the same backward as forward. This app checks your birthdate in 6 formats ddmmyyyy, mmddyyyy, yyyymmdd, ddmmyy, mmddyy, yymmdd. If your birthdate is 18 Aug. 1997, then app will check for 18081997, 08181997, 19970818, 180897, 081897, 970818</p>
+        <div id="birthday-input">
+            <label for="date" >Enter your birthdate here :</label>
+            <input type="date" id="birthday-date">
+        </div>
 
-    <div>
-        <label for="date" >Enter your Birthdate:</label>
-        <input type="date" id="birthday-date">
+        <button id="show-button">Show result</button>
+      
+        <p id="result" ></p>
+      </div>
+
     </div>
 
-    <button id="show-button"> Show result </button>
-      
-    <p id="result" ></p>
-          
-  </main>
-    
     <script src="./app.js"></script>
 </body>
 </html>
