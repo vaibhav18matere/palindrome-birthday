@@ -130,6 +130,8 @@ getNextPalindromeDate = (date) => {
 const dateInputRef = document.querySelector("#birthday-date");
 const showButtonRef = document.querySelector("#show-button");
 var resultRef = document.querySelector("#result");
+const privacyNote = document.querySelector("#privacy-policy");
+const privacyPolicyBtn = document.querySelector("#privacy-button");
 
 clickHandler = () => {
     var birthdayStr = dateInputRef.value;
@@ -149,10 +151,14 @@ clickHandler = () => {
             resultRef.innerText = "Your Birthday is Palindrome"
         } else {
             var [counter, nextDate] = getNextPalindromeDate(date);
-            resultRef.innerText = `Next Palindrome date is ${nextDate.day} - ${nextDate.month} - ${nextDate.year}, You missed it by ${counter} days.`
+            resultRef.innerText = `Your birthdate is not palindrome, next Palindrome date is ${nextDate.day}-${nextDate.month}-${nextDate.year}, You missed it by ${counter} days.`
         }
 
     }
 }
 
 showButtonRef.addEventListener("click", clickHandler);
+
+privacyPolicyBtn.addEventListener("click", () => {
+    privacyNote.style.visibility = "hidden";
+});
