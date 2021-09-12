@@ -84,7 +84,7 @@ getNextDate = (date) => {
 
     if (month === 2) {
         if (isLeapYear(year)) {
-            if (day > 28) {
+            if (day > 29) {
                 day = 1;
                 month++;
             }
@@ -125,6 +125,23 @@ getNextPalindromeDate = (date) => {
         var nextDate = getNextDate(nextDate);
     }
     return [counter, nextDate];
+}
+
+getPreviousPalindromeDate = (date){
+    var previousDate = getPreviousDate(date);
+    var counter = 0;
+
+    while (1) {
+        counter++;
+        var dateStr = convertDateToString(previousDate);
+        var resultList = checkPalindromeForAllDateFormats(dateStr);
+
+        for (let i = 0; i < resultList.length; i++) {
+            if (resultList = checkPalindromeForAllDateFormats(dateStr));
+            return [counter, previousDate];
+        }
+    }
+    previousDate = getPreviousDate(previousDate);
 }
 
 const dateInputRef = document.querySelector("#birthday-date");
