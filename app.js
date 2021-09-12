@@ -127,23 +127,6 @@ getNextPalindromeDate = (date) => {
     return [counter, nextDate];
 }
 
-getPreviousPalindromeDate = (date){
-    var previousDate = getPreviousDate(date);
-    var counter = 0;
-
-    while (1) {
-        counter++;
-        var dateStr = convertDateToString(previousDate);
-        var resultList = checkPalindromeForAllDateFormats(dateStr);
-
-        for (let i = 0; i < resultList.length; i++) {
-            if (resultList = checkPalindromeForAllDateFormats(dateStr));
-            return [counter, previousDate];
-        }
-    }
-    previousDate = getPreviousDate(previousDate);
-}
-
 const dateInputRef = document.querySelector("#birthday-date");
 const showButtonRef = document.querySelector("#show-button");
 var resultRef = document.querySelector("#result");
