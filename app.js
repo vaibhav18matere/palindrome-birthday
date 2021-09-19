@@ -112,6 +112,40 @@ getNextDate = (date) => {
     };
 }
 
+getPreviousDate = (date) => {
+    var day = date.day - 1;
+    var month = date.month;
+    var year = date.year;
+
+    daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+
+    if (month === 3 && day === 0) {
+        if (isLeapYear(year)) {
+            day = 29;
+            month--;
+        } else {
+            day = 28;
+            month--;
+        }
+    } else {
+        if (day === 0) {
+            month--;
+            day = daysInMonth[month - 1]
+        }
+    }
+    if (month <= 0) {
+        day = 31
+        month = 12
+        year--;
+    }
+
+    return {
+        day: day,
+        month: month,
+        year: year
+    };
+}
+
 getNextPalindromeDate = (date) => {
     var counter = 0;
     var nextDate = getNextDate(date);
@@ -127,11 +161,30 @@ getNextPalindromeDate = (date) => {
     return [counter, nextDate];
 }
 
+getPreviousPalindromeDate = (date) => {
+    var counterForPrevious = 0;
+    var previousDate = getPreviousDate(date)
+    while (1) {
+        counterForPrevious++;
+        var isPalindrome = checkPalindromeForAllDateFormats(previousDate);
+        if (isPalindrome) {
+            break;
+        }
+        var previousDate = getPreviousDate(previousDate)
+    }
+    return [counterForPrevious, previousDate];
+}
+
+
+
 const dateInputRef = document.querySelector("#birthday-date");
 const showButtonRef = document.querySelector("#show-button");
 var resultRef = document.querySelector("#result");
 const privacyNote = document.querySelector("#privacy-policy");
 const privacyPolicyBtn = document.querySelector("#privacy-button");
+
+const result_PerviousPaildrome = document.querySelector("#result-previous-pailndrome");
+const result_NearestPaildrome = document.querySelector("#result-nearest-pailndrome");
 
 clickHandler = () => {
     var birthdayStr = dateInputRef.value;
@@ -151,7 +204,17 @@ clickHandler = () => {
             resultRef.innerText = "Your Birthday is Palindrome"
         } else {
             var [counter, nextDate] = getNextPalindromeDate(date);
-            resultRef.innerText = `Your birthdate is not palindrome, next Palindrome date is ${nextDate.day}-${nextDate.month}-${nextDate.year}. You missed it by ${counter} days.`
+            var [counterForPrevious, previousDate] = getPreviousPalindromeDate(date)
+
+            resultRef.innerText = `Your birthdate is not palindrome, Next Palindrome date is ${nextDate.day}-${nextDate.month}-${nextDate.year}.`
+
+            result_PerviousPaildrome.innerHTML = ` Previous palindrome date is ${previousDate.day}-${previousDate.month}-${previousDate.year}.`
+
+            if (counter > counterForPrevious) {
+                result_NearestPaildrome.innerHTML = `Among those two nearest palindrome date is ${previousDate.day}-${previousDate.month}-${previousDate.year}. You missed it by ${counterForPrevious} days.`
+            } else {
+                result_NearestPaildrome.innerHTML = `Among those, nearest palindrome date from your birthdate is ${nextDate.day}-${nextDate.month}-${nextDate.year}. & You missed it by ${counter} days.`
+            }
         }
 
     }
