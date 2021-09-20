@@ -213,7 +213,7 @@ clickHandler = () => {
             if (counter > counterForPrevious) {
                 result_NearestPaildrome.innerHTML = `Among those two nearest palindrome date is ${previousDate.day}-${previousDate.month}-${previousDate.year}. You missed it by ${counterForPrevious} days.`
             } else {
-                result_NearestPaildrome.innerHTML = `Among those, nearest palindrome date from your birthdate is ${nextDate.day}-${nextDate.month}-${nextDate.year}. & You missed it by ${counter} days.`
+                result_NearestPaildrome.innerHTML = `Among those, nearest palindrome date from your birthdate is ${nextDate.day}-${nextDate.month}-${nextDate.year}. & You missed it by ${counter}  ${counter === 1 ? 'day' : 'days'}.`
             }
         }
 
